@@ -26,4 +26,10 @@ class BookPatch(BookBase):
     is_available: bool = True
 
 
-books: dict[int:Book] = {}
+books: dict[int, Book] = {
+    1: Book(id=1, title="The Catcher in the Rye", author="J.D. Salinger", is_available=False),
+    2: Book(id=2, title="To Kill a Mockingbird", author="Harper Lee", is_available=False),
+    3: Book(id=3, title="1984", author="George Orwell", is_available=False),
+    4: Book(id=4, title="Pride and Prejudice", author="Jane Austen", is_available=True),
+    5: Book(id=5, title="The Great Gatsby", author="F. Scott Fitzgerald", is_available=True),
+}
