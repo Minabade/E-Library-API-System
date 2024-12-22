@@ -24,7 +24,7 @@ borrow_records: Dict[int, Borrow_Record] = {
         id=1,
         user_id="8e29f6e1-093d-4adf-90c3-83031e88d502",
         book_id=1,
-        borrow_date=datetime.now(),
+        borrow_date=datetime(2024, 12, 19, 12, 0, 0),
         return_date=None
     ),
     2: Borrow_Record(

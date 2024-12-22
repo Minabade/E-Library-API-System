@@ -80,38 +80,39 @@ def test_return_book(mock_now):
     "return_date": mocked_return_date
   }
 
-# @patch("routers.borrow.borrow_records", mock_borrows)
-# @patch("crud.borrow.datetime")
-# def test_get_borrow_record(mock_now):
-#     mock_now.now.return_value = datetime(2024, 12, 19, 12, 0, 0)
-#     mock_now.side_effect = lambda *args, **kwargs: datetime(*args, **kwargs)
+@patch("routers.borrow.borrow_records", mock_borrows)
+@patch("crud.borrow.datetime")
+def test_get_borrow_record(mock_now):
+    mock_now.now.return_value = datetime(2024, 12, 19, 12, 0, 0)
+    mock_now.side_effect = lambda *args, **kwargs: datetime(*args, **kwargs)
     
-#     mocked_borrow_date_1 = "2024-12-19T12:00:00"
-#     mocked_borrow_date_2 = "2024-11-20T14:15:00"
-#     mocked_return_date = mock_now.now().isoformat()
+    mocked_borrow_date_1 = mock_now.now().isoformat()
+    mocked_borrow_date_2 = "2024-11-20T14:15:00"
+    mocked_return_date = mock_now.now().isoformat()
 
 
-#     expected_borrow_response = [
-#         {
-#         "id":1,
-#         "user_id":"8e29f6e1-093d-4adf-90c3-83031e88d502",
-#         "book_id":1,
-#         "borrow_date":mocked_borrow_date_1,
-#         "return_date":None
+    expected_borrow_response = [
+        {
+        "id":1,
+        "user_id":"8e29f6e1-093d-4adf-90c3-83031e88d502",
+        "book_id":1,
+        "borrow_date":mocked_borrow_date_1,
+        "return_date":None
 
-#         },
-#         {
-#         "id":2,
-#         "user_id":"8e29f6e1-093d-4adf-90c3-83031e88d502",
-#         "book_id":2,
-#         "borrow_date":mocked_borrow_date_2,
-#         "return_date":mocked_return_date
-#         }    
-#     ]  
+        },
+        {
+        "id":2,
+        "user_id":"8e29f6e1-093d-4adf-90c3-83031e88d502",
+        "book_id":2,
+        "borrow_date":mocked_borrow_date_2,
+        "return_date":mocked_return_date
+        }    
+    ]  
     
-#     response = client.get("/borrow_records/8e29f6e1-093d-4adf-90c3-83031e88d502")
-#     assert response.status_code == 200
-#     assert response.json()["user borrow record"] == expected_borrow_response
+    response = client.get("/borrow_records/8e29f6e1-093d-4adf-90c3-83031e88d502")
+
+    assert response.status_code == 200
+    assert response.json()["user borrow record"] == expected_borrow_response
 
 
      

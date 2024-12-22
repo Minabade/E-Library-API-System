@@ -9,11 +9,39 @@ Users
 users can sign up, edit their profile, delete their profile, partially update their profile, borrow books and return books. A user can only borrow a book if they are active and if the  book is available. All users can be viewed and a single user can be viewed by their ID
 
 Books
-books can be created, fully updated, partially updated, deleted and deactivated. All books can be viwed and a single book can be viewed by its ID.
+books can be created, fully updated, partially updated, deleted and deactivated. All books can be viewed and a single book can be viewed by its ID.
 
 Borrow operations
 Books can be borrowed, returned, borrow record for a user can be viewed, all borrow records can be viewed and books that are yet to be returned can be viewed.
 
+# Entities
+The system includes the following entities:
+1. User entities
+```
+  User: Represents a user of the library
+  users: Represents all users of the library
+  user_id: Unique identifier for the user
+  name: Name of the user
+  email: Email address of the user
+  is_active: Indicates if the user account is active (default value = True)
+```
+2. Book entities
+```
+  Book: Represents a book in the library
+  books: Represents all books in a library
+  book_id: Unique identifier for a book in the library.
+  title: Title  of the book
+  author: Namme of the books' author
+  is_available: Indicates if the book is available (default value = True)
+```
+3. Borrow entities
+```
+  Borrow-record: Represents a borrow record
+  id: Represents the borrow record id
+  borrow_date: Represents the date that the book was borrowed
+  return_date: Represents the date that the book was returned
+  borrow_records: Represents all the borrow_record
+```
 
 
 ## Authors
