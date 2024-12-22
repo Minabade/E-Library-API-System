@@ -17,7 +17,7 @@ async def borrow_book(user_id: str, borrow_book: BorrowRequest):
     borrow_record =  borrow_crud.borrow_book(user_id, borrow_book)
     return {"data": borrow_record,  "message": "book borrowed successfully"}
 
-@borrow_router.patch("/{borrow_id}/return_book", status_code=status.HTTP_201_CREATED)
+@borrow_router.patch("/{borrow_id}/return_book", status_code=status.HTTP_200_OK)
 async def return_book(borrow_id:int)->Dict:
     borrow_record =  borrow_crud.return_book(borrow_id)
     return {"data":borrow_record, "message": "book returned successfully"}

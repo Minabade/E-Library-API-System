@@ -55,25 +55,13 @@ class BorrowCrud():
         
     
     
-    # @staticmethod
-    # def return_book(book_id: int):
-    #     book: Book= book_crud.get_book_by_id(book_id)
-        
-    #     if book.is_available:
-    #         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="book is already available")
-    #     borrow_record: Borrow_Record = borrow_crud.get_pending_returns(book_id=book_id)
-    #     borrow_record.return_date = datetime.now()
-    #     borrow_records[borrow_record.id]=borrow_record
-    #     data = borrow_record.model_dump(exclude=["id"])
-    #     book.is_available =  True
-    #     return data
             
 
     @staticmethod
     def return_book(borrow_id: int):
         borrows = borrow_records.get(borrow_id)
         if not borrows:
-            raise HTTPException(status_code=404, detail="Borrow record not found")
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Borrow record not found")
         if borrows.return_date  != None:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="There is no pending return")
         
